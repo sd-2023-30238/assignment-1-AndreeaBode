@@ -1,0 +1,105 @@
+<h1>DreamCatch</h1>
+<div class="select">
+   <select name="format" id="format">
+      <option selected disabled>Selectati un tip de vise</option>
+      <option value="pdf">Vise simbolice</option>
+      <option value="txt">Vise compensatorii</option>
+      <option value="epub">Vise legate de starea de sãnãtate</option>
+      <option value="fb2">Vise legate de gãsirea solutiilor unor probleme</option>
+      <option value="mobi">Vise telepatice</option>
+      <option value="mobi">Vise premonitorii</option>
+      <option value="mobi">Vise lucide</option>
+      <option value="mobi">Cosmaruri</option>
+      
+   </select>
+  
+   <style>
+   body {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background: -webkit-linear-gradient(right, #a445b2, #fa4299, #a445b2, #fa4299);;
+   font-family: 'Open Sans', sans-serif;
+   color: #fff;
+}
+.button {
+   #FFF0F5; /* Green */
+  border: none;
+  color: gray;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+select {
+   -webkit-appearance:none;
+   -moz-appearance:none;
+   -ms-appearance:none;
+   appearance:none;
+   outline:0;
+   box-shadow:none;
+   border:0!important;
+   background: #FFF0F5;
+   background-image: none;
+   flex: 1;
+   padding: 0 .5em;
+   color:gray;
+   cursor:pointer;
+   font-size: 1em;
+   font-family: 'Open Sans', sans-serif;
+}
+select::-ms-expand {
+   display: none;
+}
+.select {
+   position: relative;
+   display: flex;
+   width: 20em;
+   height: 3em;
+   line-height: 3;
+   background: #FFF0F5;
+   overflow: hidden;
+   border-radius: .25em;
+}
+.select::after {
+   content: '\25BC';
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 0 1em;
+   background: -webkit-linear-gradient(right, #a445b2, #fa4299);;;
+   cursor:pointer;
+   pointer-events:none;
+   transition:.25s all ease;
+}
+.select:hover::after {
+   color: #FFF0F5;
+}
+h2 {
+  text-align: right;
+}
+input[type=text], textarea {
+  width: 24em;
+   height: 2.5em;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 25px;
+  margin-bottom: 16px;
+  resize: vertical;
+  background-color: #FFF0F5;
+}
+
+</style>
+</div>
+
+<form>
+  <textarea id="subject" name="subject" placeholder="Adaugati o descriere..." style="height:200px"></textarea>
+</form>
+<button class="button button4">Evaluati somnul</button>
