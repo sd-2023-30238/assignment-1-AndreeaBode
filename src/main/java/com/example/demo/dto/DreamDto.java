@@ -1,64 +1,32 @@
-package com.example.demo.enity;
+package com.example.demo.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
-
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Date;
 
-@Entity
-public class Dream {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    @Column
+public class DreamDto {
     private String descriere;
-    @Column
     private String stres;
-    @Column
     private String energie;
-    @Column
     private String durata;
-    @Column
-    private LocalDate data;
-    @Column
-    @JsonProperty("tag")
     private String tag;
+    private LocalDate data;
 
-    public Dream() {}
 
-    public Dream(String descriere, String stres, String energie, String durata, LocalDate data, String tag) {
+    public DreamDto(String descriere, String stres, String energie, String durata, String tag, LocalDate data) {
         this.descriere = descriere;
         this.stres = stres;
         this.energie = energie;
         this.durata = durata;
-        this.data = data;
         this.tag = tag;
+        this.data = data;
     }
 
     public LocalDate getData() {
         return data;
     }
 
-    public void setLocalDate(LocalDate data) {
+    public void setData(LocalDate data) {
         this.data = data;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getDescriere() {
@@ -93,9 +61,17 @@ public class Dream {
         this.durata = durata;
     }
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
     @Override
     public String toString() {
-        return "Dream{" +
+        return "DreamDto{" +
                 "localDate=" + data +
                 '}';
     }
