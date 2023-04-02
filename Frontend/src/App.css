@@ -91,6 +91,13 @@ small {
   text-align: right;
   color: white;
  }
+ .error {
+  color:#FFC0CB;
+  font-size: 20px;
+}
+.hidden {
+  display: none;
+}
 
 input[type=text], textarea {
  width: 24em;

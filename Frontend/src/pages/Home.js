@@ -14,11 +14,11 @@ export default function Home() {
   const [duration, setDurata] = useState("");
   const [message, setMessage] = useState("");
   const [dream, setDream] = useState({
-    descriere:"des",
-    stres:"st",
-    energie:"st",
-    durata:"sts",
-    tag: "test tag" ,
+    descriere: "des",
+    stres: "st",
+    energie: "st",
+    durata: "sts",
+    tag: "test tag",
   });
 
 
@@ -35,39 +35,53 @@ export default function Home() {
   const handleChartStress = async (e) => {
     e.preventDefault();
     console.log(e);
+
+    // Validate input
+    const stressValue = parseInt(stress);
+    const durationValue = parseInt(duration);
+    const energyValue = parseInt(energy);
+    if (isNaN(stressValue) || stressValue < 1 || stressValue > 5 || isNaN(durationValue) || durationValue < 1 || durationValue > 5 || isNaN(energyValue) || energyValue < 1 || energyValue > 5) {
+      setMessage("Values should be a number between 1 and 5!");
+      return;
+    }
+    else {
+      setMessage("");
+    }
+
     const dream = {
-      descriere:description,
-      stres:stress,
-      energie:energy,
-      durata:duration,
+      descriere: description,
+      stres: stressValue,
+      energie: energy,
+      durata: duration,
       tag: format,
     };
     console.log(dream);
     await axios.post("http://localhost:8080/api/dreamService/save", dream);
     navigate("/");
   };
+
   const handleChartDuration = (e) => {
     e.preventDefault();
-    const dream = { durata:duration }
+    const dream = { durata: duration }
     console.log(dream);
   }
   const handleChartStressN = (e) => {
     e.preventDefault();
-    const dream = { stres:stress }
+    const dream = { stres: stress }
     console.log(dream);
   }
 
 
   const handleChartEnergy = (e) => {
     e.preventDefault();
-    const dream = { energie:energy }
+    const dream = { energie: energy }
     console.log(dream);
   }
 
 
   return (
     <div>
-     <br></br><br></br>
+      <br></br><br></br>
       <div className="select">
         <select name="format" id="format" value={format} onChange={(e) => setFormat(e.target.value)}>
           <option disabled>Selectati un tip de vise</option>
@@ -94,12 +108,12 @@ export default function Home() {
       </form>
       <div className="field" >
         <input type="text" placeholder="Adaugati valoarea stresului[1-5]..." onChange={(e) => { setStress(e.target.value); }}></input>
-        <button type="submit" className="button button4" onClick={handleChartStressN}>StresChart</button><br></br>
+        <button type="submit" className="button button4" onClick={handleChartStressN}>Stres</button><br></br>
         <input type="text" placeholder="Adaugati valoarea energiei[1-5]..." onChange={(e) => { setEnergie(e.target.value); }}></input>
-        <button type="submit" className="button button4" onClick={handleChartEnergy}>EnergieChart</button><br></br>
+        <button type="submit" className="button button4" onClick={handleChartEnergy}>Energie</button><br></br>
         <input type="text" placeholder="Adaugati valoarea duratei[1-5]..." onChange={(e) => { setDurata(e.target.value); }}></input>
-        <button type="submit" className="button button4" onClick={handleChartDuration}>DurataChart</button><br></br>
-        <small>Valorile introduse trebuie sa fie numere din intervalul [1-5], altfel nu vor fi luate de catre sistem!</small><br></br>
+        <button type="submit" className="button button4" onClick={handleChartDuration}>Durata</button><br></br>
+        <div className={message ? "error" : "hidden"}>{message}</div><br></br>
         <button type="submit" className="button button4" onClick={handleChartStress}>Submit</button><br></br>
       </div>
     </div>

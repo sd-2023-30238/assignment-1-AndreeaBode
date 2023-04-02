@@ -22,43 +22,40 @@ export default function Home() {
     await axios.delete(`http://localhost:8080/user/${id}`);
     loadUsers();
   };
+  
   return (
     <div className="container">
       <div className="py-4">
-        <table className="table border shadow">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Descriere</th>
-              <th scope="col">Durata</th>
-              <th scope="col">Energie</th>
-              <th scope="col">Date</th>
-              <th scope="col">Stres</th>
-              <th scope="col">Tag</th>
+        <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Descriere</th>
+            <th scope="col">Stres</th>
+            <th scope="col">Energie</th>
+            <th scope="col">Data</th>
+            <th scope="col">Durata</th>
+            <th scope="col">Tag</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {users.map((user, index) => (
+            <tr key={index}>
+              <th scope="row">{user.id}</th>
+              <td>{user.descriere}</td>
+              <td>{user.durata}</td>
+              <td>{user.energie}</td>
+              <td style={{ whiteSpace: 'nowrap' }}>
+                {moment(user.data).format('YYYY-MM-DD')}
+              </td>
+              <td>{user.stres}</td>
+              <td>{user.tag}</td>
             </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr>
-                <th scope="row" key={index}>
-                  {index + 1}
-                </th>
-                <td>{user.id}</td>
-                <td>{user.descriere}</td>
-                <td>{user.durata}</td>
-                <td>{user.energie}</td>
-                <td>{moment(user.data).format( ' YYYY-MM-DD hh:mm:ss ' ) }</td>
-                <td>{user.stres}</td>
-                <td>{user.tag}</td>
-                <td>
-                </td>
-              </tr>
-             
-            ))}
-          </tbody>
+          ))}
+        </tbody>
         </table>
       </div>
     </div>
   );
-  
 }
